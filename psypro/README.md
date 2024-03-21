@@ -68,5 +68,5 @@
 
 - 오후내내 어디서 안넘어가는지 보다 포기.
 - 내일 다시 정신 차리고 해봐야겠다.
-  ![upload_img](img/index.png)
-  ![upload_img](img/in_link_error.png)
+  ![upload_img](/psypro/img/index.png)
+  ![upload_img](/psypro/img/in_link_error.png)
