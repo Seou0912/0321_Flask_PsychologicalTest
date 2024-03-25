@@ -70,3 +70,9 @@
 - 내일 다시 정신 차리고 해봐야겠다
 - <img width="1236" alt="Screenshot 2024-03-21 at 4 16 19 PM" src="https://github.com/Seou0912/0321_Flask_PsychologicalTest/assets/151927766/9c505669-517b-49dd-826f-4ac16e9b04bd">
   <img width="1095" alt="Screenshot 2024-03-21 at 4 18 06 PM" src="https://github.com/Seou0912/0321_Flask_PsychologicalTest/assets/151927766/dd397d03-704a-4e62-864a-020c33999d33">
+
+## 아무리 생각해도 내가 모든 코드를 작업한 것이 아니라 끝까지 한다는 것은 무의미 해졌다.
+## 여유를 두고 다시 공부를 해야겠다.
+
+시간에 쫒겨 이렇게 혼자서 삽질하는 시간을 낭비하기 싫다.
+## 다시 작업하는 날 보자.
