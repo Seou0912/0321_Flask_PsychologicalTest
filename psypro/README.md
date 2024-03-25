@@ -69,5 +69,4 @@
 - 오후내내 어디서 안넘어가는지 보다 포기.
 - 내일 다시 정신 차리고 해봐야겠다
 - <img width="1236" alt="Screenshot 2024-03-21 at 4 16 19 PM" src="https://github.com/Seou0912/0321_Flask_PsychologicalTest/assets/151927766/9c505669-517b-49dd-826f-4ac16e9b04bd">
-<img width="1095" alt="Screenshot 2024-03-21 at 4 18 06 PM" src="https://github.com/Seou0912/0321_Flask_PsychologicalTest/assets/151927766/dd397d03-704a-4e62-864a-020c33999d33">
-
+  <img width="1095" alt="Screenshot 2024-03-21 at 4 18 06 PM" src="https://github.com/Seou0912/0321_Flask_PsychologicalTest/assets/151927766/dd397d03-704a-4e62-864a-020c33999d33">

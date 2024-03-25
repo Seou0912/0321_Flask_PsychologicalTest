@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>심리테스트 결과 시각화</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+      }
+      #graphContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .graph {
+        width: 90%; /* 그래프 너비 조정 */
+        max-width: 600px; /* 최대 너비 설정 */
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="graphContainer"></div>
+
+    <script>
+      fetch("/visualize")
+        .then((response) => response.json())
+        .then((data) => {
+          data.forEach((item, index) => {
+            const graphId = `graph${index}`;
+            const div = document.createElement("div");
+            div.id = graphId;
+            div.className = "graph";
+            document.getElementById("graphContainer").appendChild(div);
+
+            const trace = {
+              type: "pie",
+              values: [item.yes, item.no], // 각각 "예", "아니오" 응답 수
+              labels: ["예", "아니오"], // 라벨 설정
+              textinfo: "label+percent",
+              insidetextorientation: "radial",
+            };
+
+            const layout = {
+              title: item.question,
+            };
+
+            Plotly.newPlot(graphId, [trace], layout);
+          });
+        });
+    </script>
+  </body>
+</html>

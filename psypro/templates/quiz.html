@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>심리테스트</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      #question {
+        margin-top: 50px;
+        font-size: 24px;
+      }
+
+      #buttons {
+        margin-top: 20px;
+      }
+
+      button {
+        font-size: 18px;
+        margin: 50px 15px;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="question"></div>
+    <div id="buttons">
+      <button id="yes">예</button>
+      <button id="no">아니오</button>
+    </div>
+    <div id="resultPage" style="display: none">
+      <button onclick="sendResult()">결과 제출</button>
+    </div>
+
+    <script>
+      const questions = [
+        "당신은 새로운 환경에 쉽게 적응한다고 생각하나요?",
+        "친구들 사이에서 당신은 리더 역할을 자주 맡게 되나요?",
+        "중요한 결정을 내릴 때, 감정보다는 이성을 우선시하나요?",
+        "당신은 평소에 계획을 세우고 그 계획대로 행동하는 편인가요?",
+        "새로운 사람을 만날 때, 주로 당신이 먼저 대화를 시작하나요?",
+        "실패를 경험했을 때, 그것을 교훈으로 삼는 편인가요?",
+        "다른 사람들이 당신에 대해 어떻게 생각하는지 자주 궁금해하나요?",
+        "과거의 실수를 떠올리며 후회하는 경우가 많나요?",
+        "목표를 달성하기 위해 희생이 필요하다면, 그 희생을 감수할 용의가 있나요?",
+        "자신이 진정으로 원하는 것이 무엇인지 항상 분명히 알고 있나요?",
+      ];
+
+      const questionElement = document.getElementById("question");
+      const buttonsElement = document.getElementById("buttons");
+      const resultPageElement = document.getElementById("resultPage");
+      let currentQuestionIndex = 0;
+      let userAnswers = [];
+
+      function showQuestion() {
+        if (currentQuestionIndex < questions.length) {
+          questionElement.innerText = questions[currentQuestionIndex];
+          buttonsElement.style.display = "block";
+          resultPageElement.style.display = "none";
+        } else {
+          questionElement.innerText = "심리테스트가 종료되었습니다.";
+          buttonsElement.style.display = "none";
+          resultPageElement.style.display = "block";
+        }
+      }
+      showQuestion();
+
+      document.getElementById("yes").addEventListener("click", () => {
+        userAnswers[currentQuestionIndex] = "yes";
+        currentQuestionIndex++;
+        showQuestion();
+      });
+
+      document.getElementById("no").addEventListener("click", () => {
+        userAnswers[currentQuestionIndex] = "no";
+        currentQuestionIndex++;
+        showQuestion();
+      });
+
+      async function sendResult() {
+        const answers = questions.map((_, index) => ({
+          question_id: index + 1,
+          chosen_answer: userAnswers[index],
+        }));
+        try {
+          const response = await fetch("/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "app/json",
+            },
+            body: JSON.stringify({ answers }),
+          });
+          if (!response.ok) throw new Error("서버 응답 실패");
+          console.log("결과 전송 완료");
+          window.location.href = "/results";
+        } catch (error) {
+          console.error("오류 발생:", error);
+        }
+      }
+    </script>
+  </body>
+</html>
